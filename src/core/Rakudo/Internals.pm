@@ -14,8 +14,7 @@ my class Rakudo::Internals {
         has $!iter;
 
         method BUILD(\hash) {
-            $!storage := nqp::getattr(hash,Map,'$!storage');
-            $!storage := no-keys unless $!storage.DEFINITE;
+            $!storage := nqp::getattr(hash, Map, '$!storage') || no-keys;
             $!iter    := nqp::iterator($!storage);
             self
         }
