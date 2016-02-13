@@ -718,8 +718,8 @@ my class Rakudo::Internals {
     }
 
     # easy access to compile options
+    # Perl6::Compiler.command_eval guarantees that it isn't null
     my Mu $compiling-options := nqp::atkey(%*COMPILING, '%?OPTIONS');
-    $compiling-options := no-keys if nqp::isnull($compiling-options);
 
     # running with --ll-exception
     method LL-EXCEPTION() {
